@@ -4,5 +4,5 @@ const route = express.Router();
 
 route.post('/add',addUser);
 route.get('/users',getUser);
-
+route.post('/conversation/add',newConversation);
 export default route
