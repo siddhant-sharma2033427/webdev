@@ -19,3 +19,13 @@ export const newConversation = async (request,response)=>{
         return response.status(500).json('error occured in conversation-controller');
     }
 }
+
+export const getConversation = async (request, response) => {
+    try {
+        const conversation = await Conversation.findOne({ members: { $all: [ request.body.senderId, request.body.receiverId] }});
+        response.status(200).json(conversation);
+    } catch (error) {
+        response.status(500).json(error);
+    }
+
+}
